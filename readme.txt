@@ -14,7 +14,7 @@ Out result
 an excel file will be genrated that will conating records of each student in row.
 
 Explanaition of Column in the geberated excel file
-'stunid'
+'stunid'                : Unique Identification each student, it was aoto-generated
  'sex'
 'catchement_area'
 'state', 
