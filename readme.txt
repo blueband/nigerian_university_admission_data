@@ -6,7 +6,7 @@ applicant data for machine learning project. However, all institution in Nigeria
 hence i can not access appropriate data during this lockdown, but I need to continue to work on my project. So this script is an attempted to generate
 "simulated" admission data that can fit into my Machine learning project."
 
-########### What it Does#########################
+########### What it Does #########################
 This Python script generate simulated admission data for a candidate that appyly for a specific programme,
 It allocate Olevel Result, UTME result, POST UTME.
 It calculate weighted score each candidate olevel, utme and post-utme and find the totat aggregate score.
@@ -17,6 +17,11 @@ It equally determine admission status of student based on calculated parameter f
 2. programme applying for by the student
 3, the cutoff_mark for such programme
 
+
+########## Supported Programme ##############
+As April 17, 2020, Computer Science and Computer engineering based on 
+Kwara State Univeritym Malete addmission requirement, are supported, 
+more programme will be add later
 
 ################ Output File
 Simulated Data will be save into an excel document in the same root where the script is executed
