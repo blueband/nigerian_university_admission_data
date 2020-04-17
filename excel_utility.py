@@ -2,7 +2,11 @@ import openpyxl as exel
 import os
 dir_src = os.path.dirname(__file__)
 
-working_file = dir_src + '\\' + 'studentRecord.xlsx'
+def writeFilename(filename):
+    filename = filename.lower().replace(' ', '_')
+    working_file = dir_src + '\\' + filename + '.xlsx'
+    return working_file
+
 def create_workbook():
     # A copy of workbook and one single worksheet is produce to the calling functions
 
@@ -10,7 +14,7 @@ def create_workbook():
     wsheet = wkbook.active
     return wkbook, wsheet
 
-def creatSubjecteHeader(subjectList):
+def creatSubjecteHeader(subjectList, filename):
     wkbook, current_sheet = create_workbook()
     num_columns = len(subjectList)
 
@@ -18,11 +22,11 @@ def creatSubjecteHeader(subjectList):
     while initial_column < num_columns:
         current_sheet.cell(row=1, column=initial_column+1).value = subjectList[initial_column]
         initial_column += 1
-    wkbook.save(working_file)
+    wkbook.save(filename)
 
     
-def retrievedColhead():
-    wkbook = exel.load_workbook(working_file)
+def retrievedColhead(filename):
+    wkbook = exel.load_workbook(filename)
     wksheet = wkbook.active
 
     for row in wksheet.iter_rows(min_row=1, max_row=1,values_only=True):
@@ -37,7 +41,7 @@ def getColnum(colobj, wksheet):
             
 
 def getUserdata(*args):
-    cols, wksheet, wkbook = retrievedColhead()
+    cols, wksheet, wkbook = retrievedColhead(args[1])
     num_student = len(args[0])
     data = args[0]
     for col in cols:
@@ -51,7 +55,7 @@ def getUserdata(*args):
                     count += 1
 
     
-    wkbook.save(working_file)
+    wkbook.save(args[1])
     # print('i got here after saving your data in the excel file')
     
 

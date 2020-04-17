@@ -4,12 +4,13 @@ from jambdata import JambData
 from selection_criteria import convertGrade
 from utility_file import score2Grade, getSortedResult, stRanking
 from data_interface import get_columnName
-from excel_utility import creatSubjecteHeader, getUserdata
+from excel_utility import creatSubjecteHeader, getUserdata, writeFilename
 
 
 def main(num_row, Programme=None, cutoff_mark=None):
+    filename = writeFilename(Programme)
     head_column = get_columnName()
-    creatSubjecteHeader(head_column)  # Building column of the 
+    creatSubjecteHeader(head_column, filename)  # Building column of the 
     final_records = dict()
     counter = 0
     while counter < num_row:
@@ -24,7 +25,7 @@ def main(num_row, Programme=None, cutoff_mark=None):
         counter += 1
     # SortedResult = getSortedResult(final_records)
     # studentFinalRanking = stRanking(final_records, SortedResult)
-    getUserdata(final_records)
+    getUserdata(final_records, filename)
 
 
 

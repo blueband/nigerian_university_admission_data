@@ -1,5 +1,5 @@
 ####### TODO LIST ########
-1. check existing of output dat before vreating new file
-To add Readme file
-Documentation of function and Class
+1. check existing of output data before vreating new file
+2 To add Readme file
+3 Documentation of function and Class
 
