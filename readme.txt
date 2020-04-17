@@ -13,8 +13,8 @@ It calculate weighted score each candidate olevel, utme and post-utme and find t
 It equally determine admission status of student based on calculated parameter for screen
 
 ########## The script work by user submit the following data as parameter###################
-1. number of user you which to generate
-2. programme applying for by the student
+1. number of user you wishes to generate
+2. programme applying for by the student (computer science and engineering are supported at moment)
 3, the cutoff_mark for such programme
 
 
@@ -23,8 +23,8 @@ As April 17, 2020, Computer Science and Computer engineering based on
 Kwara State Univeritym Malete addmission requirement, are supported, 
 more programme will be add later
 
-################ Output File
-Simulated Data will be save into an excel document in the same root where the script is executed
+################ Output File ###########
+Simulated Data will be save into an excel document with same name as programme in the same root where the script is executed
 
 
 Explanation of Column in the geberated excel file
