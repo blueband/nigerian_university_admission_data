@@ -10,10 +10,13 @@ science_subject = ['Physics', 'Chemistry']
 engineering_core_sub = ['Further Mathematics']
 science_elective_subject = ['Biology', 'Agricultural Science']
 General_subject = ['Civic Education', 'Christian Religion Knowledge', 'Islamic Studies', 'Geography', 'Visual Art', 'History', 'Economics']
-Art_subject = ['Goverment', 'History', 'Commerce', 'Arabic']
+Art_subject = ['Goverment', 'History', 'Arabic']
 Compulsory_subject = ['General Mathematic', 'English Language']
 elective = ['Phyical Education', 'Fisheries', 'Animal Husbandry','Health Education']
 local_language = ['yoruba', 'igbo', 'hausa']
+comercial_core_subject = ['commerce', 'finacia Accounting' ]
+
+
 
 # Miscellenous Variable
 
