@@ -57,5 +57,3 @@ def get_columnName():
 
     
     return column_data
-
-# get_columnName()

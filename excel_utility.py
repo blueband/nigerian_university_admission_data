@@ -44,26 +44,31 @@ def getUserdata(*args):
     cols, wksheet, wkbook = retrievedColhead(args[1])
     num_student = len(args[0])
     data = args[0]
-    for col in cols:
-        count = 0
-        while count < num_student:
-            current_key = list(data)[count]
-            for user, value in data.items():
-                if user != current_key:continue
-                else:
-                    writeOutData2excel(count+1, user, value, cols, wksheet)
-                    count += 1
-
+    
+    counter = 0
+    while counter < num_student:
+        student_data = get_each_student(data, counter)
+        user = student_data.keys()
+        value = student_data.values()
+        writeOutData2excel(counter+1, user, value, cols, wksheet)
+        counter += 1
     
     wkbook.save(args[1])
-    # print('i got here after saving your data in the excel file')
+    print('Data completely writing to Excel File, you can \
+    check it in the root folder where this code is Execute')
     
 
+
+def get_each_student(studentList, index):
+    return studentList[index]
+    
 
 def writeOutData2excel(*args):
     num_row = args[0] + 1
-    key = args[1]
-    value = args[2]
+    key = list(args[1])[0]
+    value = list(args[2])[0]
+
+
     cols    = args[3]
     wksheet = args[4]    
     olevel_sub = value[0]
@@ -120,6 +125,3 @@ def writeOutData2excel(*args):
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = admissiom_status
         
-
-
-# writeOutData2excel('k')

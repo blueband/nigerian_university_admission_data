@@ -11,7 +11,7 @@ def main(num_row, Programme=None, cutoff_mark=None):
     filename = writeFilename(Programme)
     head_column = get_columnName()
     creatSubjecteHeader(head_column, filename)  # Building column of the 
-    final_records = dict()
+    listobj = []
     counter = 0
     while counter < num_row:
         Olevel_records = StudentOlevelRecord(Programme)
@@ -20,13 +20,17 @@ def main(num_row, Programme=None, cutoff_mark=None):
         jambdata = jambRecords._addScore2subject()
         partial_data = OtherData()
         o_data = partial_data.dataBucket()
-        final_records[Olevel_records[0]] = (Olevel_records[1], Olevel_records[2], \
-        jambdata[1], jambdata[2], jambdata[3], jambdata[4], jambdata[5], jambdata[6], jambdata[7], o_data)
+        listobj.append({Olevel_records[0] : (Olevel_records[1], Olevel_records[2], \
+        jambdata[1], jambdata[2], jambdata[3], jambdata[4], jambdata[5], jambdata[6], jambdata[7], o_data)})
         counter += 1
+    
+
+    
+    
     # SortedResult = getSortedResult(final_records)
     # studentFinalRanking = stRanking(final_records, SortedResult)
-    getUserdata(final_records, filename)
+    getUserdata(listobj, filename)
 
 
 
-main(1, 'Computer Engineering', 63)  # This main entry  to run the programme
+main(1, 'Computer science', 67)  # This main entry  to run the programme
