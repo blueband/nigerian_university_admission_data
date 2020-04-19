@@ -44,6 +44,13 @@ more programme will be add later.
 ################ Output File ###########
 Simulated Data will be save into an excel document with same name as programme in the same root where the script is executed
 
+![The Generated excel file look like this](/img/pic1.png)
+
+![Enlarge View of File Header 1](/img/section1.png)
+![Enlarge View of File Header 2](/img/section2.png)
+
+![Enlarge View of File Header 3](/img/section3.png)
+
 
 Explanation of Column in the geberated excel file
 'stunid'                        : Unique Identification each student, it was aoto-generated
