@@ -25,7 +25,7 @@ def get_columnName():
     column_data.append('StunID'.lower())
     column_data.append('sex'.lower())
     column_data.append('catchement_area'.lower())
-    column_data.append('state'.lower())
+    column_data.append('first_choice_status'.lower())
     column_data.append('Student Age'.replace(' ', '_').lower())
 
     # UTME Subject

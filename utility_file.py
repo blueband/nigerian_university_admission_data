@@ -80,6 +80,13 @@ def firstChoiceStatus():
     else:
         return randomize
 
+def genderStatus():
+    randomize = random.randint(0, 2)
+    if randomize == 2:
+        return 'male'
+    else:
+        return 'female'
+
 def getSortedResult(total_student_data):
     # This function extract all candidate total \
     #  aggregate and return list sorted score

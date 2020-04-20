@@ -1,6 +1,6 @@
 import  time
 import random
-from utility_file import _getRandomScore, firstChoiceStatus
+from utility_file import _getRandomScore, firstChoiceStatus, genderStatus
 
 class StudentOlevelRecord():
     '''This Class generate Random O-level WAEC Result
@@ -12,6 +12,7 @@ class StudentOlevelRecord():
     
     def __init__(self, Programme):
         self.first_choice = ('First Choice Status :'.replace(' ', '_').lower(),firstChoiceStatus())
+        self.gender = genderStatus()
         self.Programme = Programme
         self.studentID = self.uniqueID()
         self._student_olevel_subject = []
@@ -70,7 +71,7 @@ class StudentOlevelRecord():
         subjectScore = dict()
         for subject in self._student_olevel_subject:
             subjectScore[subject.replace(' ', '_').lower()] = _getRandomScore(subject) 
-        return (self.studentID, subjectScore, self.first_choice)
+        return (self.studentID, subjectScore, self.first_choice, self.gender)
 
 
 

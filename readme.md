@@ -12,9 +12,14 @@ It allocate Olevel Result, UTME result, POST UTME.
 It calculate weighted score each candidate olevel, utme and post-utme and find the totat aggregate score.
 It equally determine admission status of student based on calculated parameter for screen
 
+############ Environment and requirement#######################
+It work on Python 3.5.4 environment
+See requirements.txt file for dependency file
+
 ########## How to Instal/Use the Script ###################
 Copy entire files in to specific folder, ensure there is not space within
 "file path"
+
 
 1. Open file named "main.py"
 

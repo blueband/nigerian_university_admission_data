@@ -20,7 +20,7 @@ def main(num_row, Programme=None, cutoff_mark=None):
         jambdata = jambRecords._addScore2subject()
         partial_data = OtherData()
         o_data = partial_data.dataBucket()
-        listobj.append({Olevel_records[0] : (Olevel_records[1], Olevel_records[2], \
+        listobj.append({Olevel_records[0] : (Olevel_records[1], Olevel_records[2], Olevel_records[3], \
         jambdata[1], jambdata[2], jambdata[3], jambdata[4], jambdata[5], jambdata[6], jambdata[7], o_data)})
         counter += 1
     

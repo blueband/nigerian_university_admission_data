@@ -69,20 +69,21 @@ def writeOutData2excel(*args):
     key = list(args[1])[0]
     value = list(args[2])[0]
 
-
+    # print('what is here in value :', value)
     cols    = args[3]
     wksheet = args[4]    
     olevel_sub = value[0]
+    gender_status = value[2]
     first_choice_status = value[1][1]
-    jamb_sub = value[2]
-    prefered_programme = value[3]
-    olevelAggrScore = value[4][1]
-    posutmeAggrscore = value[5][1]
-    utmeAggr_Score = value[6][1]
-    final_score = value[7][1]
-    admissiom_status = value[8][1]
-    st_age = value[9][2]
-    catchemment_status = value[9][0]
+    jamb_sub = value[3]
+    prefered_programme = value[4]
+    olevelAggrScore = value[5][1]
+    posutmeAggrscore = value[6][1]
+    utmeAggr_Score = value[7][1]
+    final_score = value[8][1]
+    admissiom_status = value[9][1]
+    st_age = value[10][2]
+    catchemment_status = value[10][0]
 
     for col in cols:
         if col == 'stunid':
@@ -126,4 +127,10 @@ def writeOutData2excel(*args):
         elif col == 'admission_status':
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = admissiom_status
-        
+        elif col == 'sex':
+            colId = getColnum(col, wksheet)
+            wksheet.cell(row=num_row, column=colId).value = gender_status
+        elif col == 'first_choice_status':
+            colId = getColnum(col, wksheet)
+            wksheet.cell(row=num_row, column=colId).value = first_choice_status
+            
