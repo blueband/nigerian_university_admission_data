@@ -99,4 +99,3 @@ def stRanking(stdata, sortedResult):
         data = value[7][1]
         studentOverallRank[key] = sortedResult[1].index(data) + 1
     return studentOverallRank
-
