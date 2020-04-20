@@ -11,7 +11,7 @@ def gradeToNumeric(grade, utme=True):
     # This function convert given grade to its equivalent weighted value with consideration to whether student take POST UTME exams or not
     grade = str(grade.upper().strip())
     if utme:
-        if grade == 'A':return 10
+        if grade == 'A1':return 10
         elif grade == 'B2':return 9
         elif grade == 'B3':return 8
         elif grade == 'C4':return 7
@@ -33,6 +33,7 @@ def gradeToNumeric(grade, utme=True):
 
 
 def score2Grade(score):
+    # This function convert Olevel Score to its equivalent Grade (Alphabets)
     if score in range(0, 45):
         return 'F'
     elif score in range(45, 50):
@@ -64,10 +65,11 @@ def jambScoreWiethed(jambscore):
 
 
 def _getRandomScore(subject):
-        lowerscore = 45
-        upperscore = 100
-        getScore = random.randint(lowerscore, upperscore)
-        return getScore
+    # Random Score were generated for each Subject
+    lowerscore = 45
+    upperscore = 100
+    getScore = random.randint(lowerscore, upperscore)
+    return getScore
 
 
 

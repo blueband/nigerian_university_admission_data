@@ -1,5 +1,6 @@
 import openpyxl as exel
 import os
+from utility_file import score2Grade, gradeToNumeric
 dir_src = os.path.dirname(__file__)
 
 def writeFilename(filename):
@@ -91,7 +92,8 @@ def writeOutData2excel(*args):
             for sub, scr in olevel_sub.items():
                 if col == sub:
                     colId = getColnum(col, wksheet)
-                    wksheet.cell(row=num_row, column=colId).value = scr
+                    wksheet.cell(row=num_row, column=colId).value = \
+                    gradeToNumeric(score2Grade(scr))    # Convert to weighted value
             
         elif col in list(jamb_sub):
             for sub, scr in jamb_sub.items():

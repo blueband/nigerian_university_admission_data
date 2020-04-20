@@ -26,7 +26,7 @@ def main(num_row, Programme=None, cutoff_mark=None):
     
 
     
-    
+    print('this olev score', Olevel_records)
     # SortedResult = getSortedResult(final_records)
     # studentFinalRanking = stRanking(final_records, SortedResult)
     getUserdata(listobj, filename)

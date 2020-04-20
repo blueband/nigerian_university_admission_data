@@ -69,7 +69,7 @@ class StudentOlevelRecord():
     def _addScore2subject(self):
         subjectScore = dict()
         for subject in self._student_olevel_subject:
-            subjectScore[subject.replace(' ', '_').lower()] = _getRandomScore(subject)
+            subjectScore[subject.replace(' ', '_').lower()] = _getRandomScore(subject) 
         return (self.studentID, subjectScore, self.first_choice)
 
 

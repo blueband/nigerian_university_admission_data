@@ -1,9 +1,6 @@
 import random
 from utility_file import score2Grade
 from subject_misc import programme, prioritization
-# pogramme = {'computer science': [78, 365], 'computer Engineering': [85, 250], 'Library and Information Science': [72, 400]}
-
-# prioritization = {'Computer Engineering' : 6, 'Computer Science': 5, 'Library and Information Science' : 3 }
 
 def convertGrade(olevelresult):
     subGrade = []
