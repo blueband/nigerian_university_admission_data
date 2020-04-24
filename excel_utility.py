@@ -1,6 +1,6 @@
 import openpyxl as exel
 import os
-from utility_file import score2Grade, gradeToNumeric
+from utility_file import score2Grade, gradeToNumeric, stRanking
 dir_src = os.path.dirname(__file__)
 
 def writeFilename(filename):
@@ -51,7 +51,7 @@ def getUserdata(*args):
         student_data = get_each_student(data, counter)
         user = student_data.keys()
         value = student_data.values()
-        writeOutData2excel(counter+1, user, value, cols, wksheet)
+        writeOutData2excel(counter+1, user, value, cols, wksheet, data)
         counter += 1
     
     wkbook.save(args[1])
@@ -71,7 +71,8 @@ def writeOutData2excel(*args):
 
     # print('what is here in value :', value)
     cols    = args[3]
-    wksheet = args[4]    
+    wksheet = args[4]
+    original_data = args[5]    
     olevel_sub = value[0]
     gender_status = value[2]
     first_choice_status = value[1][1]
@@ -84,6 +85,11 @@ def writeOutData2excel(*args):
     admissiom_status = value[9][1]
     st_age = value[10][2]
     catchemment_status = value[10][0]
+    studentID, student_ranking = stRanking(args[1], args[2], original_data)
+    # What is coming out here
+    print('these are student ranking', student_ranking)
+
+
 
     for col in cols:
         if col == 'stunid':
@@ -133,4 +139,8 @@ def writeOutData2excel(*args):
         elif col == 'first_choice_status':
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = first_choice_status
+        elif col == 'student_ranking':
+            colId = getColnum(col, wksheet)
+            if key == studentID:
+                wksheet.cell(row=num_row, column=colId).value = student_ranking
             

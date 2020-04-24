@@ -2,7 +2,7 @@ import random
 from oleveldata import StudentOlevelRecord, OtherData
 from jambdata import JambData
 from selection_criteria import convertGrade
-from utility_file import score2Grade, getSortedResult, stRanking
+from utility_file import score2Grade, stRanking
 from data_interface import get_columnName
 from excel_utility import creatSubjecteHeader, getUserdata, writeFilename
 
@@ -26,10 +26,17 @@ def main(num_row, Programme=None, cutoff_mark=None):
     
 
     
-    # SortedResult = getSortedResult(final_records)
     # studentFinalRanking = stRanking(final_records, SortedResult)
     getUserdata(listobj, filename)
+    
+    # SortedResult = getSortedResult(listobj)
+
+    # print(stRanking(listobj))
+
+    # studentFinalRanking = stRanking(listobj, SortedResult)
+    # print('this is ranking data', studentFinalRanking)
 
 
 
-main(1, 'Computer science', 67)  # This main entry  to run the programme
+
+main(10, 'Computer science', 67)  # This main entry  to run the programme

@@ -92,17 +92,20 @@ def getSortedResult(total_student_data):
     #  aggregate and return list sorted score
     
     num_student = len(total_student_data)
-    counter = 0
     sortedResult = []
-    for studentID, data in total_student_data.items():
-        sortedResult.append(data[7][1])
+    for student in total_student_data:
+        for studentID, data in student.items():
+            sortedResult.append(data[8][1])
         
-    return ('List of Score', sorted(sortedResult, reverse=True))
+    return sorted(sortedResult, reverse=True)
 
-def stRanking(stdata, sortedResult):
-    # this function return position of a candidate
-    studentOverallRank = dict()
-    for key, value in stdata.items():
-        data = value[7][1]
-        studentOverallRank[key] = sortedResult[1].index(data) + 1
-    return studentOverallRank
+def stRanking(*args):
+    sortedResult = getSortedResult(args[2])
+    # this function return position of a candidate and its equivalent StudentID
+    studentID = args[0]
+    studentData = args[1]
+    stScore = list(studentData)[0][8][1]    # Extracting current users score
+    # print('what is inside th data studentData : ', list(studentID)[0], sortedResult.index(stScore)+1)
+    return (list(studentID)[0], sortedResult.index(stScore)+1) # to account for Zero index place
+
+    
