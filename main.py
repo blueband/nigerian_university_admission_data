@@ -39,4 +39,4 @@ def main(num_row, Programme=None, cutoff_mark=None):
 
 
 
-main(1, 'Computer science', 67)  # This main entry  to run the programme
+main(1000, 'Computer science', 67)  # This main entry  to run the programme
