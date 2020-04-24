@@ -1,6 +1,6 @@
 import openpyxl as exel
 import os
-from utility_file import score2Grade, gradeToNumeric, stRanking
+from utility_file import score2Grade, gradeToNumeric, stRanking, get_csub_status
 dir_src = os.path.dirname(__file__)
 
 def writeFilename(filename):
@@ -51,6 +51,7 @@ def getUserdata(*args):
         student_data = get_each_student(data, counter)
         user = student_data.keys()
         value = student_data.values()
+        print('writing ......', list(user)[0], 'data to the external file')
         writeOutData2excel(counter+1, user, value, cols, wksheet, data)
         counter += 1
     
@@ -69,7 +70,6 @@ def writeOutData2excel(*args):
     key = list(args[1])[0]
     value = list(args[2])[0]
 
-    # print('what is here in value :', value)
     cols    = args[3]
     wksheet = args[4]
     original_data = args[5]    
@@ -86,10 +86,7 @@ def writeOutData2excel(*args):
     st_age = value[10][2]
     catchemment_status = value[10][0]
     studentID, student_ranking = stRanking(args[1], args[2], original_data)
-    # What is coming out here
-    print('these are student ranking', student_ranking)
-
-
+    math_eng_status = None
 
     for col in cols:
         if col == 'stunid':
@@ -101,7 +98,12 @@ def writeOutData2excel(*args):
                     colId = getColnum(col, wksheet)
                     wksheet.cell(row=num_row, column=colId).value = \
                     gradeToNumeric(score2Grade(scr))    # Convert to weighted value
-            
+                
+                if sub == 'general_mathematic':
+                    math_status = math_eng_status = get_csub_status(gradeToNumeric(score2Grade(scr)))
+                elif sub == 'english_language': 
+                    eng_status = math_eng_status = get_csub_status(gradeToNumeric(score2Grade(scr)))
+                    
         elif col in list(jamb_sub):
             for sub, scr in jamb_sub.items():
                 if col == sub:
@@ -115,7 +117,7 @@ def writeOutData2excel(*args):
             wksheet.cell(row=num_row, column=colId).value = prefered_programme
         elif col == 'offered_programme':
             pass
-        elif col == 'oleve_aggr_score':
+        elif col == 'olevel_aggr_score':
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = olevelAggrScore
         elif col == 'utme_aggr_score':
@@ -131,8 +133,14 @@ def writeOutData2excel(*args):
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = st_age
         elif col == 'admission_status':
+            if math_status and eng_status and admissiom_status:
+                    math_eng_status = True
+            else:
+                math_eng_status = False
+            
             colId = getColnum(col, wksheet)
-            wksheet.cell(row=num_row, column=colId).value = admissiom_status
+            wksheet.cell(row=num_row, column=colId).value = math_eng_status
+        
         elif col == 'sex':
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = gender_status

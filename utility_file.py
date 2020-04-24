@@ -105,7 +105,11 @@ def stRanking(*args):
     studentID = args[0]
     studentData = args[1]
     stScore = list(studentData)[0][8][1]    # Extracting current users score
-    # print('what is inside th data studentData : ', list(studentID)[0], sortedResult.index(stScore)+1)
     return (list(studentID)[0], sortedResult.index(stScore)+1) # to account for Zero index place
 
     
+def get_csub_status(scr):
+    if scr == 0:
+        return False
+    else:
+        return True
