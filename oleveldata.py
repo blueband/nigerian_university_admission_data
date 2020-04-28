@@ -16,7 +16,7 @@ class StudentOlevelRecord():
         self.Programme = Programme
         self.studentID = self.uniqueID()
         self._student_olevel_subject = []
-        self.get_subjet(self.Programme)
+        self.get_subjet()
 
     def uniqueID(self):
         # This Fuction generate aunique identifer for each instantiate object/Student
@@ -36,25 +36,29 @@ class StudentOlevelRecord():
         stdId = prefix[3:9] + postfix[8:14]
         return stdId
 
-
-    def get_subjet(self, Programme):
+    def get_subjet(self):
         # This function build O level subject from available core, manfatory, elective subjects
         language_option = self.get_random_elective_subject(StudentOlevelRecord.local_language)
-        if Programme.lower() == 'Computer Science'.lower():
+        
+        if self.Programme.lower() == 'Computer Science'.lower():
             science_elective = self.get_random_elective_subject(StudentOlevelRecord.science_elective_subject)
             self._student_olevel_subject = StudentOlevelRecord.science_subject + StudentOlevelRecord.Compulsory_subject
             self._student_olevel_subject.append(science_elective)
             self._student_olevel_subject.append(language_option)
 
-        elif Programme.lower() == 'Computer Engineering'.lower():
+        elif self.Programme.lower() == 'Computer Engineering'.lower():
             self._student_olevel_subject = StudentOlevelRecord.science_subject \
             + StudentOlevelRecord.Compulsory_subject \
             + StudentOlevelRecord.engineering_core_sub
             
-        elif Programme.lower() == 'Art'.lower() :
-            pass
-        
+        elif self.Programme.lower() == 'Library and Information Science'.lower() :
+            science_option = self.get_random_elective_subject(StudentOlevelRecord.science_subject)
+            self._student_olevel_subject = StudentOlevelRecord.Compulsory_subject
+            self._student_olevel_subject.append(science_option)
+            self._student_olevel_subject.append(self.get_random_elective_subject(StudentOlevelRecord.science_elective_subject))
+            self._student_olevel_subject.append(language_option)
 
+    
     def get_random_elective_subject(self,listSubject):
         numsub = len(listSubject)
         randomize = random.randint(0, numsub)

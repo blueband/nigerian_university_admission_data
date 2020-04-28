@@ -1,6 +1,7 @@
 import openpyxl as exel
 import os
 from utility_file import score2Grade, gradeToNumeric, stRanking, get_csub_status
+from selection_criteria import OfferedProgramme
 dir_src = os.path.dirname(__file__)
 
 def writeFilename(filename):
@@ -45,6 +46,7 @@ def getUserdata(*args):
     cols, wksheet, wkbook = retrievedColhead(args[1])
     num_student = len(args[0])
     data = args[0]
+    programme_max_quota = args[2]
     
     counter = 0
     while counter < num_student:
@@ -52,7 +54,7 @@ def getUserdata(*args):
         user = student_data.keys()
         value = student_data.values()
         print('writing ......', list(user)[0], 'data to the external file')
-        writeOutData2excel(counter+1, user, value, cols, wksheet, data)
+        writeOutData2excel(counter+1, user, value, cols, wksheet, data, programme_max_quota)
         counter += 1
     
     wkbook.save(args[1])
@@ -69,7 +71,7 @@ def writeOutData2excel(*args):
     num_row = args[0] + 1
     key = list(args[1])[0]
     value = list(args[2])[0]
-
+    programme_max_quota = args[6]
     cols    = args[3]
     wksheet = args[4]
     original_data = args[5]    
@@ -82,7 +84,7 @@ def writeOutData2excel(*args):
     posutmeAggrscore = value[6][1]
     utmeAggr_Score = value[7][1]
     final_score = value[8][1]
-    admissiom_status = value[9][1]
+    admission_status = value[9][1]
     st_age = value[10][2]
     catchemment_status = value[10][0]
     studentID, student_ranking = stRanking(args[1], args[2], original_data)
@@ -115,8 +117,7 @@ def writeOutData2excel(*args):
         elif col == 'prefered_programme':
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = prefered_programme
-        elif col == 'offered_programme':
-            pass
+        
         elif col == 'olevel_aggr_score':
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = olevelAggrScore
@@ -133,7 +134,7 @@ def writeOutData2excel(*args):
             colId = getColnum(col, wksheet)
             wksheet.cell(row=num_row, column=colId).value = st_age
         elif col == 'admission_status':
-            if math_status and eng_status and admissiom_status:
+            if math_status and eng_status and admission_status:
                     math_eng_status = True
             else:
                 math_eng_status = False
@@ -151,4 +152,7 @@ def writeOutData2excel(*args):
             colId = getColnum(col, wksheet)
             if key == studentID:
                 wksheet.cell(row=num_row, column=colId).value = student_ranking
-            
+        elif col == 'offered_programme':
+            recom_programme =   OfferedProgramme(prefered_programme, math_eng_status, student_ranking, programme_max_quota)
+            colId = getColnum(col, wksheet)
+            wksheet.cell(row=num_row, column=colId).value = recom_programme.return_offered_programme()

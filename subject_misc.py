@@ -20,6 +20,6 @@ comercial_core_subject = ['commerce', 'finacia Accounting' ]
 
 # Miscellenous Variable
 
-programme = {'computer science': [78, 365], 'computer Engineering': [85, 250], 'Library and Information Science': [72, 400]}
+programme_max_quota = {'computer science': 365, 'computer Engineering': 250, 'Library and Information Science': 72}
 
 prioritization = {'Computer Engineering' : 6, 'Computer Science': 5, 'Library and Information Science' : 3 }

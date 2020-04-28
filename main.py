@@ -1,22 +1,20 @@
-import random
 from oleveldata import StudentOlevelRecord, OtherData
 from jambdata import JambData
-from selection_criteria import convertGrade
 from utility_file import score2Grade, stRanking
 from data_interface import get_columnName
 from excel_utility import creatSubjecteHeader, getUserdata, writeFilename
 
 
-def main(num_row, Programme=None, cutoff_mark=None):
-    filename = writeFilename(Programme)
+def main(*args):
+    filename = writeFilename(args[1])
     head_column = get_columnName()
     creatSubjecteHeader(head_column, filename)  # Building column of the 
     listobj = []
     counter = 0
-    while counter < num_row:
-        Olevel_records = StudentOlevelRecord(Programme)
+    while counter < args[0]:
+        Olevel_records = StudentOlevelRecord(args[1])
         Olevel_records = Olevel_records._addScore2subject()
-        jambRecords = JambData(Olevel_records[0], Olevel_records[1], Programme, cutoff_mark)       # Unique Identity supplied here
+        jambRecords = JambData(Olevel_records[0], Olevel_records[1], args[1], args[2])       # Unique Identity supplied here
         jambdata = jambRecords._addScore2subject()
         partial_data = OtherData()
         o_data = partial_data.dataBucket()
@@ -26,10 +24,8 @@ def main(num_row, Programme=None, cutoff_mark=None):
     
 
     
-    # studentFinalRanking = stRanking(final_records, SortedResult)
-    getUserdata(listobj, filename)
+    getUserdata(listobj, filename, args[3])
     
-    # SortedResult = getSortedResult(listobj)
 
     # print(stRanking(listobj))
 
@@ -39,4 +35,4 @@ def main(num_row, Programme=None, cutoff_mark=None):
 
 
 
-main(1000, 'Computer science', 67)  # This main entry  to run the programme
+main(1, 'Computer engineering', 67, 300)  # This main entry  to run the programme
