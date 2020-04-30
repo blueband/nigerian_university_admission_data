@@ -3,6 +3,7 @@ from jambdata import JambData
 from utility_file import score2Grade, stRanking
 from data_interface import get_columnName
 from excel_utility import creatSubjecteHeader, getUserdata, writeFilename
+import timeit
 
 
 def main(*args):
@@ -23,8 +24,8 @@ def main(*args):
         counter += 1
     
 
-    
     getUserdata(listobj, filename, args[3])
+    
     
 
     # print(stRanking(listobj))
@@ -35,4 +36,11 @@ def main(*args):
 
 
 
-main(1, 'Computer engineering', 67, 300)  # This main entry  to run the programme
+# Testing execution time when number candidate to generate is many
+# if __name__ =='__main__':
+#      import timeit
+#      runtimer = timeit.Timer("main(10000, 'Computer engineering', 67, 320)", 'from __main__ import main')
+#      print('the code run for : ', runtimer.timeit(number=1), 'millisecods')  
+
+#   This main entry  to run the programme
+main(1, 'Computer engineering', 67, 320)

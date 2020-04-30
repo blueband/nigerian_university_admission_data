@@ -2,6 +2,7 @@ import openpyxl as exel
 import os
 from utility_file import score2Grade, gradeToNumeric, stRanking, get_csub_status
 from selection_criteria import OfferedProgramme
+from xlsx_csv_converter import csvWriter
 dir_src = os.path.dirname(__file__)
 
 def writeFilename(filename):
@@ -58,6 +59,8 @@ def getUserdata(*args):
         counter += 1
     
     wkbook.save(args[1])
+    # print(args[1])
+    csvWriter(args[1])
     print('Data completely writing to Excel File, you can \
     check it in the root folder where this code is Execute')
     

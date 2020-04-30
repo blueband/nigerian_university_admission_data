@@ -10,7 +10,6 @@ class OfferedProgramme(StudentOlevelRecord):
         ''' admi_status Boolean, student_ranking position, carrying capacity of
         the programmme
         '''
-        
         super().__init__(args[0])
         self.adm_status = args[1]
         self.student_ranking = args[2]
@@ -33,13 +32,8 @@ class OfferedProgramme(StudentOlevelRecord):
         return available_programme
 
 
-    # def approved_programme(self, *args):
-
-    #     for value in args[0]:
-
 
     def getStatus(self, *args):
-        print('from getstatus function', args[0], args[1], args[2])
         if args[0] == True and args[1] <= args[2]:
             return True
         else:
@@ -48,7 +42,6 @@ class OfferedProgramme(StudentOlevelRecord):
     def return_offered_programme(self):
         # Return Recommeded alternative programme
         status = self.getStatus(self.adm_status, self.student_ranking, self.programme_quota)
-        print('what is the status at this point ', status)
         if status:
             return self.Programme
         else:
@@ -67,11 +60,3 @@ class OfferedProgramme(StudentOlevelRecord):
         else:
             return elements[randomize]
             
-# l = OfferedProgramme('Computer Science')
-# m = OfferedProgramme('Computer Engineering')
-# k = OfferedProgramme('Library and Information Science')
-
-
-# print(k._student_olevel_subject)
-# print(l._student_olevel_subject)
-# print(m._student_olevel_subject)
